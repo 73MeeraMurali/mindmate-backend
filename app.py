@@ -4,6 +4,7 @@ from flask_cors import CORS
 import sqlite3
 from datetime import datetime
 from collections import Counter
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -492,4 +493,5 @@ def weekly_moods():
 # RUN SERVER
 # ----------------------------
 if __name__ == '__main__':
-   app.run(host="0.0.0.0", port=5002, debug=True)
+   port = int(os.environ.get("PORT", 10000))
+   app.run(host="0.0.0.0", port=port, debug=True)
